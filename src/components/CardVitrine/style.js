@@ -45,7 +45,7 @@ const StyledCardVitrine = styled.div`
     background-color: var(--purple3);
     color: white;
     font-family: "Nunito", sans-serif;
-    width: 175px;
+    width: 185px;
     height: 30px;
     border-radius: 7px;
     font-size: 15px;

@@ -1,12 +1,13 @@
 import StyledCardCart from "./style.js";
 import { FaTrash } from "react-icons/fa";
-import { removeFromCartThunk } from "../../store/modules/cart/thunk.js";
-import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { useContext } from "react";
+import { CartContext } from "../../providers/cart";
 
 function CardCart({ product }) {
   const { name, band, price, img, id } = product;
 
-  const dispatch = useDispatch();
+  const { removeFromCart } = useContext(CartContext);
 
   return (
     <li key={id}>
@@ -21,7 +22,8 @@ function CardCart({ product }) {
           <span>R$ {price.toString().replace(".", ",")}</span>
           <button
             onClick={() => {
-              dispatch(removeFromCartThunk(product));
+              removeFromCart(product);
+              toast.success("Produto removido com sucesso!");
             }}
           >
             <FaTrash />

@@ -2,22 +2,15 @@ import CardCart from "../CardCart/index";
 import StyledCartList from "./style.js";
 import CartResume from "../CartResume";
 import { FaCompactDisc } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { CartContext } from "../../providers/cart";
 
 function CartList() {
-  const cart = useSelector((state) => state.cart);
-  /* 
-  const carrinho = useSelector((state) => state.cart);
-
-  console.log(carrinho, "CARRINHO NO CART LIST"); */
+  const { cart } = useContext(CartContext);
 
   if (cart.length > 0) {
     return (
       <StyledCartList>
-        {/* <div className="header-cart">
-          <h2 className="produto">Produto</h2>
-          <h2 className="preco">Preco</h2>
-        </div> */}
         <ul>
           {cart.map((product) => {
             return <CardCart key={product.id} product={product} />;

@@ -1,9 +1,10 @@
 import { FaShoppingBag } from "react-icons/fa";
 import StyledCartResume from "./style.js";
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { CartContext } from "../../providers/cart";
 
 function CartResume() {
-  const cart = useSelector((state) => state.cart);
+  const { cart } = useContext(CartContext);
 
   if (cart.length > 0) {
     return (

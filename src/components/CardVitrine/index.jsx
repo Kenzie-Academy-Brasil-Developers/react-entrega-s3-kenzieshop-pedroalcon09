@@ -1,11 +1,12 @@
 import StyledCardVitrine from "./style";
-import { useDispatch } from "react-redux";
-import { addToCartThunk } from "../../store/modules/cart/thunk";
+import { useContext } from "react";
+import { CartContext } from "../../providers/cart";
+import { toast } from "react-toastify";
 
 function CardVitrine({ product }) {
   const { name, band, price, img, year, id } = product;
 
-  const dispatch = useDispatch();
+  const { addToCart } = useContext(CartContext);
 
   return (
     <li key={id}>
@@ -19,7 +20,8 @@ function CardVitrine({ product }) {
         <span>R$ {price.toString().replace(".", ",")}</span>
         <button
           onClick={() => {
-            dispatch(addToCartThunk(product));
+            addToCart(product);
+            toast.success("Produto adicionado com sucesso!");
           }}
         >
           Adicionar ao carrinho

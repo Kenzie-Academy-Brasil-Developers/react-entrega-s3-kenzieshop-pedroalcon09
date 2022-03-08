@@ -1,14 +1,16 @@
 import StyledVitrine from "./style.js";
 import CardVitrine from "../CardVitrine/index";
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+
+import { CatalogueContext } from "../../providers/catalogue";
 
 function Vitrine() {
-  const estoque = useSelector((state) => state.products);
+  const { catalogue } = useContext(CatalogueContext);
 
   return (
     <StyledVitrine>
       <ul>
-        {estoque.map((product) => {
+        {catalogue.map((product) => {
           return <CardVitrine key={product.id} product={product} />;
         })}
       </ul>
